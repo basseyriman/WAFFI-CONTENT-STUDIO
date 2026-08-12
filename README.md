@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WAFFI Content Studio
 
-## Getting Started
+Premium multi-set content studio website for **WAFFI Content Studio** — book curated partitions and rent shoot essentials.
 
-First, run the development server:
+## Features
+
+- 15 named studio spaces with generated placeholder photography
+- Dark / light mode
+- Rental catalog for lighting, audio, props, furniture, and backdrops
+- Booking inquiry form (space + rentals)
+- Supabase-ready booking persistence
+
+## Studio pet names
+
+| Partition | Pet name |
+|---|---|
+| Traditional | Waffi Heritage |
+| Maternity / kids | Waffi Nest |
+| White themed | Waffi Ivory |
+| Rose themed | Waffi Blush |
+| Makeup studio | Waffi Glam |
+| Staircase | Waffi Ascent |
+| Bedroom | Waffi Suite |
+| Games room / Bar | Waffi Social |
+| Office | Waffi Desk |
+| Podcast | Waffi Echo |
+| Kitchen | Waffi Hearth |
+| Backdrop studio | Waffi Canvas |
+| Lounge / sitting | Waffi Lounge |
+| Hallway | Waffi Passage |
+| Balcony | Waffi Terrace |
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Supabase setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Open [the project dashboard](https://supabase.com/dashboard/project/gyegrjzuhadjrxaeelxy)
+2. Run `supabase/schema.sql` in the SQL editor
+3. Copy `.env.example` to `.env.local` and add your anon key
 
-## Learn More
+Without env vars, booking inquiries still succeed and are logged server-side.
 
-To learn more about Next.js, take a look at the following resources:
+## Replace studio photos later
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Generated images live in `public/spaces/` and `public/brand/`. When real studio photographs are ready, replace files using the same filenames (or update paths in `src/lib/spaces.ts`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Designed for Vercel. Set the same `NEXT_PUBLIC_SUPABASE_*` environment variables in the hosting project.

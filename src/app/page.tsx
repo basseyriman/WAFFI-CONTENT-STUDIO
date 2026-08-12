@@ -1,69 +1,117 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Aperture, Sparkles, Clapperboard } from "lucide-react";
+import { spaces } from "@/lib/spaces";
+import { SpaceCard } from "@/components/space-card";
 
-export default function Home() {
+const featured = spaces.slice(0, 6);
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <>
+      <section className="relative min-h-[92vh] overflow-hidden grain">
         <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/brand/hero.jpg"
+          alt="WAFFI Content Studio interior"
+          fill
           priority
+          className="object-cover"
+          sizes="100vw"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+        <div className="absolute inset-0" style={{ background: "var(--hero-veil)" }} />
+        <div className="section-pad relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-end pb-16 pt-28 md:justify-center md:pb-24">
+          <p className="animate-float-in text-xs font-semibold uppercase tracking-[0.35em] text-accent-soft">
+            Content studio for every story
           </p>
+          <h1 className="animate-float-in-delay font-display mt-4 max-w-4xl text-5xl leading-[1.05] text-white md:text-7xl lg:text-8xl">
+            WAFFI
+            <span className="mt-2 block text-3xl font-normal tracking-[0.12em] text-white/80 md:text-4xl">
+              CONTENT STUDIO
+            </span>
+          </h1>
+          <p className="animate-float-in-delay-2 mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
+            Fifteen named sets. One premium house of content. Book the space that fits your shoot — and rent the extras you need.
+          </p>
+          <div className="animate-float-in-delay-2 mt-8 flex flex-wrap gap-3">
+            <Link href="/spaces" className="btn-primary">
+              Explore spaces <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/rentals" className="btn-ghost border-white/30 text-white hover:border-accent-soft hover:text-accent-soft">
+              Browse rentals
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="section-pad mx-auto max-w-7xl py-20 md:py-28">
+        <div className="grid gap-10 md:grid-cols-3">
+          {[
+            {
+              icon: Aperture,
+              title: "15 curated sets",
+              copy: "From Waffi Heritage to Waffi Terrace — every partition has a pet name and a purpose.",
+            },
+            {
+              icon: Sparkles,
+              title: "Shoot-ready polish",
+              copy: "Lighting, textures, and styling designed to look premium on camera from the first frame.",
+            },
+            {
+              icon: Clapperboard,
+              title: "Rent what you need",
+              copy: "Lights, audio, props, and furniture available through the site for any client shoot.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="rounded-2xl border border-border bg-surface p-7">
+              <item.icon className="h-6 w-6 text-accent" />
+              <h2 className="font-display mt-5 text-2xl text-ink">{item.title}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{item.copy}</p>
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="section-pad mx-auto max-w-7xl pb-10">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Signature sets</p>
+            <h2 className="font-display mt-3 text-4xl text-ink md:text-5xl">Find your frame</h2>
+          </div>
+          <Link href="/spaces" className="btn-ghost text-sm">
+            View all spaces
+          </Link>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((space, i) => (
+            <SpaceCard key={space.slug} space={space} priority={i < 3} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section-pad mx-auto max-w-7xl py-20 md:py-28">
+        <div className="overflow-hidden rounded-[2rem] border border-border bg-surface-2">
+          <div className="grid md:grid-cols-2">
+            <div className="relative min-h-[280px] md:min-h-full">
+              <Image src="/spaces/canvas.jpg" alt="Waffi Canvas backdrop studio" fill className="object-cover" sizes="50vw" />
+            </div>
+            <div className="flex flex-col justify-center p-8 md:p-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Rentals</p>
+              <h2 className="font-display mt-3 text-4xl text-ink">Gear & props on demand</h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
+                Need a ring light, softbox duo, wireless mic, statement chair, or seamless backdrop? Request rentals when you book — we stage them for your shoot day.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/rentals" className="btn-primary">
+                  See rental catalog
+                </Link>
+                <Link href="/book" className="btn-ghost">
+                  Book now
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

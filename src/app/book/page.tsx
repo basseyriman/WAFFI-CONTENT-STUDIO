@@ -4,7 +4,7 @@ import { BookingForm } from "@/components/booking-form";
 
 export const metadata: Metadata = {
   title: "Book a shoot",
-  description: "Book a WAFFI Content Studio space and request rentals for your content shoot.",
+  description: "Book a WAFFI Content Studio space. Your details are sent to the studio on WhatsApp.",
 };
 
 export default function BookPage() {
@@ -13,7 +13,7 @@ export default function BookPage() {
       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Bookings</p>
       <h1 className="font-display mt-3 text-4xl text-ink md:text-6xl">Book your WAFFI shoot</h1>
       <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-        Tell us the space, date, and any rentals you need. We’ll confirm availability and send next steps.
+        Tell us the space, date, and any rentals you need. Sending the form opens WhatsApp so the studio team gets the booking in the chat they already use.
       </p>
       <div className="mt-10">
         <Suspense fallback={<div className="h-96 animate-pulse rounded-2xl bg-surface" />}>

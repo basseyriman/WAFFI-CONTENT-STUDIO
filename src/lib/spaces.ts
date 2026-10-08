@@ -13,7 +13,7 @@ export const spaces: StudioSpace[] = [
   {
     slug: "waffi-heritage",
     petName: "Waffi Heritage",
-    category: "Traditional space",
+    category: "Traditional",
     tagline: "Culture, texture, and timeless storytelling.",
     description:
       "A richly styled traditional set with warm woods, patterned textiles, and heritage details — made for cultural portraits, brand stories, and elevated lifestyle content.",
@@ -22,20 +22,20 @@ export const spaces: StudioSpace[] = [
     idealFor: ["Cultural campaigns", "Portrait series", "Brand storytelling"],
   },
   {
-    slug: "waffi-nest",
-    petName: "Waffi Nest",
-    category: "Maternity / kids space",
+    slug: "waffi-drape",
+    petName: "Waffi Drape",
+    category: "Maternity / Kids",
     tagline: "Soft light for soft beginnings.",
     description:
-      "A gentle nursery-inspired set designed for maternity, newborn, and family moments — calm tones, plush textures, and flattering natural light.",
+      "A gentle draped set designed for maternity, newborn, and family moments — calm tones, soft fabrics, and flattering natural light.",
     image: "/spaces/nest.jpg",
-    highlights: ["Soft pastel palette", "Nursery styling", "Family-ready props"],
+    highlights: ["Soft draped styling", "Nursery-ready mood", "Family-ready props"],
     idealFor: ["Maternity shoots", "Kids content", "Family brands"],
   },
   {
-    slug: "waffi-ivory",
-    petName: "Waffi Ivory",
-    category: "White themed space",
+    slug: "waffi-cloud",
+    petName: "Waffi Cloud",
+    category: "White Themed",
     tagline: "Clean canvas. Unlimited looks.",
     description:
       "An all-white minimal set that keeps the focus on talent and product. Bright, airy, and endlessly adaptable for fashion, beauty, and commercial work.",
@@ -44,20 +44,20 @@ export const spaces: StudioSpace[] = [
     idealFor: ["Fashion", "Product", "Beauty campaigns"],
   },
   {
-    slug: "waffi-blush",
-    petName: "Waffi Blush",
-    category: "Rose themed space",
+    slug: "waffi-rose",
+    petName: "Waffi Rose",
+    category: "Rose Themed",
     tagline: "Romantic glow with editorial polish.",
     description:
-      "Blush tones, velvet textures, and soft glam lighting for romantic, feminine, and beauty-forward content that feels premium on camera.",
+      "Rose tones, soft textures, and glamorous lighting for romantic, feminine, and beauty-forward content that feels premium on camera.",
     image: "/spaces/blush.jpg",
-    highlights: ["Rose & blush palette", "Velvet seating", "Glamorous ambience"],
+    highlights: ["Rose palette", "Velvet seating", "Glamorous ambience"],
     idealFor: ["Beauty brands", "Influencer content", "Romance campaigns"],
   },
   {
     slug: "waffi-glam",
     petName: "Waffi Glam",
-    category: "Makeup studio space",
+    category: "Makeup Studio",
     tagline: "Where glow-ups get their close-up.",
     description:
       "A professional vanity bay with lighted mirrors and beauty-ready stations — perfect for MUAs, tutorials, and glam transformation content.",
@@ -66,9 +66,9 @@ export const spaces: StudioSpace[] = [
     idealFor: ["Makeup artists", "Tutorials", "Beauty launches"],
   },
   {
-    slug: "waffi-ascent",
-    petName: "Waffi Ascent",
-    category: "Staircase space",
+    slug: "waffi-steps",
+    petName: "Waffi Steps",
+    category: "Staircase",
     tagline: "Drama in every step.",
     description:
       "A sculptural staircase set built for editorial movement, fashion reveals, and cinematic vertical compositions.",
@@ -79,7 +79,7 @@ export const spaces: StudioSpace[] = [
   {
     slug: "waffi-suite",
     petName: "Waffi Suite",
-    category: "Bedroom space",
+    category: "Bedroom",
     tagline: "Intimate lifestyle, elevated.",
     description:
       "A luxurious bedroom set for lifestyle brands, morning routines, and intimate product storytelling with hotel-suite energy.",
@@ -88,9 +88,9 @@ export const spaces: StudioSpace[] = [
     idealFor: ["Lifestyle brands", "Skincare", "Intimate apparel"],
   },
   {
-    slug: "waffi-social",
-    petName: "Waffi Social",
-    category: "Games room / Bar space",
+    slug: "waffi-socials",
+    petName: "Waffi Socials",
+    category: "Games Room / Bar",
     tagline: "Playful nights. Scroll-stopping energy.",
     description:
       "A stylish bar and games lounge for nightlife vibes, social content, brand activations, and creator hangout shoots.",
@@ -101,7 +101,7 @@ export const spaces: StudioSpace[] = [
   {
     slug: "waffi-desk",
     petName: "Waffi Desk",
-    category: "Office space",
+    category: "Office",
     tagline: "Boss energy, camera ready.",
     description:
       "A polished office set for founder stories, professional headshots, productivity content, and corporate brand films.",
@@ -110,9 +110,9 @@ export const spaces: StudioSpace[] = [
     idealFor: ["Founders", "Corporate brands", "LinkedIn content"],
   },
   {
-    slug: "waffi-echo",
-    petName: "Waffi Echo",
-    category: "Podcast space",
+    slug: "waffi-voice",
+    petName: "Waffi Voice",
+    category: "Podcast",
     tagline: "Sound that looks as good as it sounds.",
     description:
       "An acoustic podcast bay with on-camera presence — microphones, warm lighting, and a set designed for talk shows and audio-first creators.",
@@ -121,9 +121,9 @@ export const spaces: StudioSpace[] = [
     idealFor: ["Podcasts", "Interviews", "Audio brands"],
   },
   {
-    slug: "waffi-hearth",
-    petName: "Waffi Hearth",
-    category: "Kitchen space",
+    slug: "waffi-spice",
+    petName: "Waffi Spice",
+    category: "Kitchen",
     tagline: "Flavor, lifestyle, and food stories.",
     description:
       "A styled culinary kitchen with island staging for cooking shows, recipe reels, and food brand campaigns.",
@@ -132,9 +132,9 @@ export const spaces: StudioSpace[] = [
     idealFor: ["Food brands", "Recipe creators", "Kitchenware"],
   },
   {
-    slug: "waffi-canvas",
-    petName: "Waffi Canvas",
-    category: "Backdrop studio space",
+    slug: "waffi-backdrop",
+    petName: "Waffi Backdrop",
+    category: "Backdrop Studio",
     tagline: "Seamless. Flexible. Always on brand.",
     description:
       "A dedicated backdrop and cyclorama space for product packs, portraits, and fast turnaround commercial shoots.",
@@ -145,7 +145,7 @@ export const spaces: StudioSpace[] = [
   {
     slug: "waffi-lounge",
     petName: "Waffi Lounge",
-    category: "Lounge / sitting room",
+    category: "Lounge / Sitting Room",
     tagline: "Conversation-ready comfort.",
     description:
       "A refined sitting lounge for talk-style content, brand interviews, and cozy lifestyle scenes that feel lived-in and elevated.",
@@ -156,7 +156,7 @@ export const spaces: StudioSpace[] = [
   {
     slug: "waffi-passage",
     petName: "Waffi Passage",
-    category: "Hallway space",
+    category: "Hallway",
     tagline: "Runway energy in a corridor.",
     description:
       "A long gallery hallway with perspective drama — ideal for fashion walks, transitions, and cinematic walking shots.",
@@ -165,12 +165,12 @@ export const spaces: StudioSpace[] = [
     idealFor: ["Fashion walks", "Transitions", "Brand films"],
   },
   {
-    slug: "waffi-terrace",
-    petName: "Waffi Terrace",
-    category: "Balcony space",
+    slug: "waffi-balcony",
+    petName: "Waffi Balcony",
+    category: "Balcony",
     tagline: "Open air. Golden hour ready.",
     description:
-      "An outdoor balcony terrace for natural-light lifestyle content, golden-hour portraits, and fresh air brand moments.",
+      "An outdoor balcony set for natural-light lifestyle content, golden-hour portraits, and fresh air brand moments.",
     image: "/spaces/terrace.jpg",
     highlights: ["Natural light", "Outdoor seating", "Skyline atmosphere"],
     idealFor: ["Golden hour", "Lifestyle outdoors", "Fresh air content"],

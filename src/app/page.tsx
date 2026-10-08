@@ -36,7 +36,7 @@ export default function HomePage() {
             <Link href="/spaces" className="btn-primary">
               Explore spaces <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/rentals" className="btn-ghost border-white/30 text-white hover:border-accent-soft hover:text-accent-soft">
+            <Link href="/rentals" className="btn-ghost btn-ghost-on-dark">
               Browse rentals
             </Link>
           </div>
@@ -49,7 +49,7 @@ export default function HomePage() {
             {
               icon: Aperture,
               title: "15 curated sets",
-              copy: "From Waffi Heritage to Waffi Terrace — every partition has a pet name and a purpose.",
+              copy: "From Waffi Heritage to Waffi Balcony — every partition has a pet name and a purpose.",
             },
             {
               icon: Sparkles,
@@ -59,7 +59,7 @@ export default function HomePage() {
             {
               icon: Clapperboard,
               title: "Rent what you need",
-              copy: "Lights, audio, props, and furniture available through the site for any client shoot.",
+              copy: "Christmas pyjamas in every size, and maternity long gowns, ready for your shoot day.",
             },
           ].map((item) => (
             <div key={item.title} className="rounded-2xl border border-border bg-surface p-7">
@@ -92,13 +92,13 @@ export default function HomePage() {
         <div className="overflow-hidden rounded-[2rem] border border-border bg-surface-2">
           <div className="grid md:grid-cols-2">
             <div className="relative min-h-[280px] md:min-h-full">
-              <Image src="/spaces/canvas.jpg" alt="Waffi Canvas backdrop studio" fill className="object-cover" sizes="50vw" />
+              <Image src="/spaces/canvas.jpg" alt="Backdrop Studio" fill className="object-cover" sizes="50vw" />
             </div>
             <div className="flex flex-col justify-center p-8 md:p-12">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Rentals</p>
-              <h2 className="font-display mt-3 text-4xl text-ink">Gear & props on demand</h2>
+              <h2 className="font-display mt-3 text-4xl text-ink">Wardrobe for the shoot</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
-                Need a ring light, softbox duo, wireless mic, statement chair, or seamless backdrop? Request rentals when you book — we stage them for your shoot day.
+                Rent Christmas pyjamas in every size, or a set of maternity long gowns. Request them when you book — we prepare them for your shoot day.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/rentals" className="btn-primary">

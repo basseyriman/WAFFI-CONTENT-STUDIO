@@ -184,6 +184,30 @@ body::before {
   transform: translateY(-1px);
 }
 
+.btn-ghost-on-dark {
+  border-color: #fff;
+  color: #fff;
+  background: transparent;
+}
+
+.btn-ghost-on-dark:hover {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-logo-dark {
+  display: none;
+}
+
+.dark .nav-logo-light {
+  display: none;
+}
+
+.dark .nav-logo-dark {
+  display: block;
+}
+
 .section-pad {
   padding-inline: 1.25rem;
 }

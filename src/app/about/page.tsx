@@ -24,11 +24,11 @@ export default function AboutPage() {
       <section className="section-pad mx-auto max-w-3xl py-16 md:py-24">
         <p className="text-lg leading-relaxed text-muted">
           WAFFI Content Studio is a multi-partition creative house for everyone who wants a ready-made content set. From traditional storytelling in{" "}
-          <span className="text-foreground">Waffi Heritage</span> to soft beginnings in <span className="text-foreground">Waffi Nest</span>, clean commercial work in{" "}
-          <span className="text-foreground">Waffi Ivory</span>, and golden-hour moments on <span className="text-foreground">Waffi Terrace</span> — every space carries the WAFFI name.
+          <span className="text-foreground">Waffi Heritage</span> to soft beginnings in <span className="text-foreground">Waffi Drape</span>, clean commercial work in{" "}
+          <span className="text-foreground">Waffi Cloud</span>, and golden-hour moments on <span className="text-foreground">Waffi Balcony</span> — every space carries the WAFFI name.
         </p>
         <p className="mt-6 text-lg leading-relaxed text-muted">
-          Beyond the sets, clients can rent lighting, audio, props, and furniture through the website so a shoot arrives complete — space, mood, and essentials.
+          Beyond the sets, clients can rent Christmas pyjamas and maternity gowns through the website so a shoot arrives with the wardrobe ready.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Link href="/spaces" className="btn-primary">
@@ -36,6 +36,9 @@ export default function AboutPage() {
           </Link>
           <Link href="/book" className="btn-ghost">
             Book a day
+          </Link>
+          <Link href="/reviews" className="btn-ghost">
+            Leave a review
           </Link>
         </div>
       </section>

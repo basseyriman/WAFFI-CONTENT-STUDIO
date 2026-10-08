@@ -1,80 +1,87 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { spaces } from "@/lib/spaces";
 import { rentals } from "@/lib/rentals";
-import { CheckCircle2, Loader2 } from "lucide-react";
-
-type InquiryType = "space" | "rental" | "both" | "general";
+import { studioWhatsAppUrl } from "@/lib/contact";
+import { CheckCircle2 } from "lucide-react";
 
 export function BookingForm() {
   const params = useSearchParams();
   const initialSpace = params.get("space") ?? "";
   const initialRental = params.get("rental") ?? "";
 
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [error, setError] = useState("");
+  const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [whatsappUrl, setWhatsappUrl] = useState("");
   const [selectedRentals, setSelectedRentals] = useState<string[]>(initialRental ? [initialRental] : []);
-
-  const inquiryType: InquiryType = useMemo(() => {
-    const hasSpace = Boolean(initialSpace);
-    const hasRental = selectedRentals.length > 0;
-    if (hasSpace && hasRental) return "both";
-    if (hasSpace) return "space";
-    if (hasRental) return "rental";
-    return "general";
-  }, [initialSpace, selectedRentals]);
 
   function toggleRental(id: string) {
     setSelectedRentals((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
   }
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("loading");
-    setError("");
 
     const form = new FormData(e.currentTarget);
-    const payload = {
-      full_name: String(form.get("full_name") || ""),
-      email: String(form.get("email") || ""),
-      phone: String(form.get("phone") || ""),
-      shoot_date: String(form.get("shoot_date") || "") || null,
-      space_slug: String(form.get("space_slug") || "") || null,
-      rental_ids: selectedRentals,
-      message: String(form.get("message") || ""),
-      inquiry_type: inquiryType,
-    };
+    const fullName = String(form.get("full_name") || "").trim();
+    const email = String(form.get("email") || "").trim();
+    const phone = String(form.get("phone") || "").trim();
+    const shootDate = String(form.get("shoot_date") || "").trim();
+    const spaceSlug = String(form.get("space_slug") || "").trim();
+    const note = String(form.get("message") || "").trim();
 
-    try {
-      const res = await fetch("/api/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Unable to submit inquiry");
-      setStatus("success");
-      e.currentTarget.reset();
-      setSelectedRentals([]);
-    } catch (err) {
-      setStatus("error");
-      setError(err instanceof Error ? err.message : "Something went wrong");
-    }
+    const space = spaces.find((item) => item.slug === spaceSlug);
+    const spaceLabel = space ? `${space.petName} — ${space.category}` : "Not specified";
+    const rentalLabel =
+      selectedRentals
+        .map((id) => rentals.find((item) => item.id === id)?.name)
+        .filter(Boolean)
+        .join(", ") || "None";
+    const dateLabel = shootDate
+      ? new Date(`${shootDate}T00:00:00`).toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })
+      : "Not specified";
+
+    const message = [
+      "New WAFFI shoot booking",
+      "",
+      `Name: ${fullName}`,
+      `Email: ${email}`,
+      `Phone: ${phone}`,
+      `Preferred date: ${dateLabel}`,
+      `Space: ${spaceLabel}`,
+      `Rentals: ${rentalLabel}`,
+      "",
+      "Message:",
+      note,
+    ].join("\n");
+
+    const url = studioWhatsAppUrl(message);
+    setWhatsappUrl(url);
+    window.open(url, "_blank", "noopener,noreferrer");
+    setStatus("success");
   }
 
   if (status === "success") {
     return (
       <div className="rounded-2xl border border-border bg-surface p-8 text-center">
         <CheckCircle2 className="mx-auto h-10 w-10 text-accent" />
-        <h3 className="font-display mt-4 text-3xl text-ink">Inquiry received</h3>
-        <p className="mt-3 text-sm text-muted">
-          Thanks for choosing WAFFI. Our studio team will confirm availability and next steps shortly.
+        <h3 className="font-display mt-4 text-3xl text-ink">WhatsApp is ready</h3>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          Tap send in WhatsApp so the studio receives this booking. The team replies in that same chat.
         </p>
-        <button type="button" className="btn-primary mt-6" onClick={() => setStatus("idle")}>
-          Send another inquiry
-        </button>
+        <div className="mt-6 flex flex-col items-center gap-3">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
+            Open WhatsApp again
+          </a>
+          <button type="button" className="btn-ghost" onClick={() => setStatus("idle")}>
+            Send another booking
+          </button>
+        </div>
       </div>
     );
   }
@@ -143,16 +150,8 @@ export function BookingForm() {
         />
       </label>
 
-      {status === "error" && <p className="text-sm text-red-500">{error}</p>}
-
-      <button type="submit" disabled={status === "loading"} className="btn-primary w-full disabled:opacity-70">
-        {status === "loading" ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" /> Sending...
-          </>
-        ) : (
-          "Submit inquiry"
-        )}
+      <button type="submit" className="btn-primary w-full">
+        Send booking on WhatsApp
       </button>
     </form>
   );

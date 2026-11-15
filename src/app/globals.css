@@ -61,6 +61,14 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
@@ -68,6 +76,21 @@ body {
   color: var(--foreground);
   font-family: var(--font-outfit), sans-serif;
   min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Keep form controls at 16px so iOS does not zoom on focus */
+input,
+select,
+textarea,
+button {
+  font-size: 1rem;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
 }
 
 body::before {
@@ -155,6 +178,7 @@ body::before {
   color: #0c0a08;
   font-weight: 600;
   padding: 0.85rem 1.5rem;
+  min-height: 2.75rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
@@ -175,6 +199,7 @@ body::before {
   color: var(--foreground);
   font-weight: 500;
   padding: 0.85rem 1.5rem;
+  min-height: 2.75rem;
   transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
 
@@ -209,17 +234,40 @@ body::before {
 }
 
 .section-pad {
-  padding-inline: 1.25rem;
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 480px) {
+  .section-pad {
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
 }
 
 @media (min-width: 768px) {
   .section-pad {
-    padding-inline: 2rem;
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
   }
 }
 
 @media (min-width: 1280px) {
   .section-pad {
-    padding-inline: 3rem;
+    padding-left: max(3rem, env(safe-area-inset-left, 0px));
+    padding-right: max(3rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 639px) {
+  .cta-row > a,
+  .cta-row > button {
+    width: 100%;
   }
 }

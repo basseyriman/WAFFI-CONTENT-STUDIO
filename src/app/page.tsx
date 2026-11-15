@@ -9,30 +9,30 @@ const featured = spaces.slice(0, 6);
 export default function HomePage() {
   return (
     <>
-      <section className="relative min-h-[92vh] overflow-hidden grain">
+      <section className="relative min-h-[100svh] overflow-hidden grain">
         <Image
           src="/brand/hero.jpg"
           alt="WAFFI Content Studio interior"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-[68%_center] sm:object-center"
           sizes="100vw"
         />
         <div className="absolute inset-0" style={{ background: "var(--hero-veil)" }} />
-        <div className="section-pad relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-end pb-16 pt-28 md:justify-center md:pb-24">
-          <p className="animate-float-in text-xs font-semibold uppercase tracking-[0.35em] text-accent-soft">
+        <div className="section-pad relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end pb-12 pt-24 sm:pb-16 md:justify-center md:pb-24">
+          <p className="animate-float-in text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-accent-soft sm:text-xs sm:tracking-[0.35em]">
             Content studio for every story
           </p>
-          <h1 className="animate-float-in-delay font-display mt-4 max-w-4xl text-5xl leading-[1.05] text-white md:text-7xl lg:text-8xl">
+          <h1 className="animate-float-in-delay font-display mt-3 max-w-4xl text-4xl leading-[1.05] text-white sm:mt-4 sm:text-5xl md:text-7xl lg:text-8xl">
             WAFFI
-            <span className="mt-2 block text-3xl font-normal tracking-[0.12em] text-white/80 md:text-4xl">
+            <span className="mt-2 block text-2xl font-normal tracking-[0.1em] text-white/80 sm:text-3xl sm:tracking-[0.12em] md:text-4xl">
               CONTENT STUDIO
             </span>
           </h1>
-          <p className="animate-float-in-delay-2 mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
+          <p className="animate-float-in-delay-2 mt-4 max-w-xl text-sm leading-relaxed text-white/80 sm:mt-6 sm:text-base md:text-lg">
             Fifteen named sets. One premium house of content. Book the space that fits your shoot — and rent the extras you need.
           </p>
-          <div className="animate-float-in-delay-2 mt-8 flex flex-wrap gap-3">
+          <div className="cta-row animate-float-in-delay-2 mt-6 sm:mt-8">
             <Link href="/spaces" className="btn-primary">
               Explore spaces <ArrowRight className="h-4 w-4" />
             </Link>
@@ -43,8 +43,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad mx-auto max-w-7xl py-20 md:py-28">
-        <div className="grid gap-10 md:grid-cols-3">
+      <section className="section-pad mx-auto max-w-7xl py-14 sm:py-20 md:py-28">
+        <div className="grid gap-5 sm:gap-10 md:grid-cols-3">
           {[
             {
               icon: Aperture,
@@ -75,9 +75,9 @@ export default function HomePage() {
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Signature sets</p>
-            <h2 className="font-display mt-3 text-4xl text-ink md:text-5xl">Find your frame</h2>
+            <h2 className="font-display mt-3 text-3xl text-ink sm:text-4xl md:text-5xl">Find your frame</h2>
           </div>
-          <Link href="/spaces" className="btn-ghost text-sm">
+          <Link href="/spaces" className="btn-ghost w-full text-sm sm:w-auto">
             View all spaces
           </Link>
         </div>
@@ -88,19 +88,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad mx-auto max-w-7xl py-20 md:py-28">
-        <div className="overflow-hidden rounded-[2rem] border border-border bg-surface-2">
+      <section className="section-pad mx-auto max-w-7xl py-14 sm:py-20 md:py-28">
+        <div className="overflow-hidden rounded-[1.5rem] border border-border bg-surface-2 sm:rounded-[2rem]">
           <div className="grid md:grid-cols-2">
-            <div className="relative min-h-[280px] md:min-h-full">
-              <Image src="/spaces/canvas.jpg" alt="Backdrop Studio" fill className="object-cover" sizes="50vw" />
+            <div className="relative min-h-[220px] sm:min-h-[280px] md:min-h-full">
+              <Image src="/spaces/canvas.jpg" alt="Backdrop Studio" fill className="object-cover" sizes="(max-width:768px) 100vw, 50vw" />
             </div>
-            <div className="flex flex-col justify-center p-8 md:p-12">
+            <div className="flex flex-col justify-center p-6 sm:p-8 md:p-12">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Rentals</p>
-              <h2 className="font-display mt-3 text-4xl text-ink">Wardrobe for the shoot</h2>
+              <h2 className="font-display mt-3 text-3xl text-ink sm:text-4xl">Wardrobe for the shoot</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
                 Rent costumes and styling pieces for your shoot. Request them when you book — we prepare them for your shoot day.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="cta-row mt-6 sm:mt-8">
                 <Link href="/rentals" className="btn-primary">
                   See rental catalog
                 </Link>

@@ -18,9 +18,9 @@ export function SpaceCard({ space, priority = false }: { space: StudioSpace; pri
           className="object-cover transition duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-5">
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent-soft">{space.category}</p>
-          <h3 className="font-display mt-1 text-2xl text-white">{space.petName}</h3>
+          <h3 className="font-display mt-1 text-xl text-white sm:text-2xl">{space.petName}</h3>
           <p className="mt-1 line-clamp-2 text-sm text-white/75">{space.tagline}</p>
         </div>
       </div>

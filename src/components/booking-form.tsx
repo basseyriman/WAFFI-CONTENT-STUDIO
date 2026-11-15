@@ -261,17 +261,17 @@ export function BookingForm() {
 
   if (payStatus === "paid" || payStatus === "inquired") {
     return (
-      <div className="rounded-2xl border border-border bg-surface p-8 text-center">
+      <div className="rounded-2xl border border-border bg-surface p-5 text-center sm:p-8">
         <CheckCircle2 className="mx-auto h-10 w-10 text-accent" />
-        <h3 className="font-display mt-4 text-3xl text-ink">
+        <h3 className="font-display mt-4 text-2xl text-ink sm:text-3xl">
           {payStatus === "paid" ? "Payment received" : "Inquiry ready"}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-muted">
+        <p className="mt-3 break-words text-sm leading-relaxed text-muted">
           {payStatus === "paid"
             ? `${formatNaira(paidAmount)} paid via Paystack${paymentRef ? ` · Ref ${paymentRef}` : ""}. WhatsApp opened so the studio gets your booking details.`
             : "WhatsApp opened with your on-request inquiry. Send the message so the studio can confirm availability and pricing."}
         </p>
-        <div className="mt-6 flex flex-col items-center gap-3">
+        <div className="cta-row mt-6 justify-center">
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
             Open WhatsApp again
           </a>
@@ -293,11 +293,11 @@ export function BookingForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5 rounded-2xl border border-border bg-surface p-6 md:p-8">
-      <div className="grid gap-5 md:grid-cols-2">
-        <Field label="Full name" name="full_name" required />
-        <Field label="Email" name="email" type="email" required />
-        <Field label="Phone / WhatsApp" name="phone" required />
+    <form onSubmit={onSubmit} className="space-y-5 rounded-2xl border border-border bg-surface p-4 sm:p-6 md:p-8">
+      <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
+        <Field label="Full name" name="full_name" required autoComplete="name" />
+        <Field label="Email" name="email" type="email" required autoComplete="email" />
+        <Field label="Phone / WhatsApp" name="phone" type="tel" required autoComplete="tel" />
         <label className="block">
           <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-muted">
             Preferred date
@@ -311,7 +311,7 @@ export function BookingForm() {
               setShootDate(e.target.value);
               setSpaceTimeSlots({});
             }}
-            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-accent"
+            className="w-full min-h-12 rounded-xl border border-border bg-background px-4 py-3 text-base outline-none focus:border-accent"
           />
         </label>
       </div>
@@ -341,7 +341,7 @@ export function BookingForm() {
         {spacesOpen ? (
           <fieldset className="border-t border-border px-4 pb-4 pt-3">
             <legend className="sr-only">Studio spaces</legend>
-            <div className="grid max-h-80 gap-2 overflow-y-auto sm:grid-cols-2">
+            <div className="grid max-h-[min(22rem,55vh)] gap-2 overflow-y-auto overscroll-contain sm:grid-cols-2">
               {spaces.map((space) => {
                 const selected = selectedSpaces.includes(space.slug);
                 return (
@@ -353,14 +353,14 @@ export function BookingForm() {
                   >
                     <input
                       type="checkbox"
-                      className="mt-1 accent-[var(--accent)]"
+                      className="mt-1 h-4 w-4 shrink-0 accent-[var(--accent)]"
                       checked={selected}
                       onChange={() => toggleSpace(space.slug)}
                     />
                     <span className="min-w-0 flex-1">
-                      <span className="flex items-start justify-between gap-2">
-                        <span className="font-medium text-foreground">{space.petName}</span>
-                        <span className="max-w-[9.5rem] shrink-0 text-right text-[11px] font-semibold leading-snug text-accent">
+                      <span className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
+                        <span className="font-medium leading-snug text-foreground">{space.petName}</span>
+                        <span className="text-[11px] font-semibold leading-snug text-accent sm:max-w-[9.5rem] sm:shrink-0 sm:text-right">
                           {formatSpaceRate(space)}
                         </span>
                       </span>
@@ -444,8 +444,8 @@ export function BookingForm() {
                 className="space-y-3 rounded-xl border border-border bg-background p-4"
               >
                 <legend className="px-1 text-sm font-medium text-foreground">
-                  {space.petName}
-                  <span className="ml-2 text-xs font-normal text-muted">
+                  <span className="block">{space.petName}</span>
+                  <span className="mt-1 block text-xs font-normal text-muted">
                     Hourly · {formatNairaAmount(space.priceHour || 0)} / hour
                   </span>
                 </legend>
@@ -544,7 +544,7 @@ export function BookingForm() {
           name="rental_id"
           value={rentalId}
           onChange={(e) => setRentalId(e.target.value)}
-          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-accent"
+          className="w-full min-h-12 rounded-xl border border-border bg-background px-4 py-3 text-base outline-none focus:border-accent"
         >
           <option value="">No rentals needed</option>
           {rentals.map((item) => (
@@ -563,20 +563,20 @@ export function BookingForm() {
           required
           rows={5}
           placeholder="Tell us about your shoot, crew size, and any special needs..."
-          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-accent"
+          className="w-full min-h-28 rounded-xl border border-border bg-background px-4 py-3 text-base outline-none focus:border-accent"
         />
       </label>
 
-      <div className="rounded-2xl border border-accent/30 bg-accent/5 px-4 py-4">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <div>
+      <div className="sticky bottom-3 z-20 space-y-3 rounded-2xl border border-accent/30 bg-surface/95 p-4 shadow-[0_12px_40px_-16px_rgba(0,0,0,0.35)] backdrop-blur-md sm:static sm:bg-accent/5 sm:p-4 sm:shadow-none sm:backdrop-blur-none">
+        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-3">
+          <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
               {inquiryOnly ? "Pricing" : "Amount to pay"}
             </p>
-            <p className="font-display mt-1 text-3xl text-ink">{totalLabel}</p>
+            <p className="font-display mt-1 break-words text-2xl text-ink sm:text-3xl">{totalLabel}</p>
           </div>
           {canShowTotal && previewQuote.amountNaira > 0 ? (
-            <p className="max-w-xs text-right text-xs text-muted">
+            <p className="max-w-full text-xs text-muted sm:max-w-xs sm:text-right">
               {previewQuote.hourlyTotal > 0 ? `${formatNaira(previewQuote.hourlyTotal)} hourly` : null}
               {previewQuote.hourlyTotal > 0 && previewQuote.overnightTotal > 0 ? " + " : null}
               {previewQuote.overnightTotal > 0 ? `${formatNaira(previewQuote.overnightTotal)} overnight` : null}
@@ -585,32 +585,32 @@ export function BookingForm() {
           ) : null}
         </div>
         {canPay && previewQuote.hasOnRequest ? (
-          <p className="mt-3 text-xs text-muted">
+          <p className="text-xs text-muted">
             On-request items are included in the WhatsApp message after payment for studio confirmation.
           </p>
         ) : null}
         {inquiryOnly ? (
-          <p className="mt-3 text-xs text-muted">
+          <p className="text-xs text-muted">
             This selection needs studio confirmation. Send the inquiry on WhatsApp to get availability and final pricing.
           </p>
         ) : null}
+
+        {payError ? <p className="text-sm text-red-500">{payError}</p> : null}
+
+        <button
+          type="submit"
+          className="btn-primary w-full"
+          disabled={payStatus === "paying" || (!canPay && !inquiryOnly)}
+        >
+          {payStatus === "paying"
+            ? "Opening Paystack..."
+            : canPay
+              ? `Pay ${formatNaira(previewQuote.amountNaira)} with Paystack`
+              : inquiryOnly
+                ? "Inquire on WhatsApp"
+                : "Complete booking details"}
+        </button>
       </div>
-
-      {payError ? <p className="text-sm text-red-500">{payError}</p> : null}
-
-      <button
-        type="submit"
-        className="btn-primary w-full"
-        disabled={payStatus === "paying" || (!canPay && !inquiryOnly)}
-      >
-        {payStatus === "paying"
-          ? "Opening Paystack..."
-          : canPay
-            ? `Pay ${formatNaira(previewQuote.amountNaira)} with Paystack`
-            : inquiryOnly
-              ? "Inquire on WhatsApp"
-              : "Complete booking details"}
-      </button>
     </form>
   );
 }
@@ -620,11 +620,13 @@ function Field({
   name,
   type = "text",
   required = false,
+  autoComplete,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  autoComplete?: string;
 }) {
   return (
     <label className="block">
@@ -633,7 +635,8 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none focus:border-accent"
+        autoComplete={autoComplete}
+        className="w-full min-h-12 rounded-xl border border-border bg-background px-4 py-3 text-base outline-none focus:border-accent"
       />
     </label>
   );

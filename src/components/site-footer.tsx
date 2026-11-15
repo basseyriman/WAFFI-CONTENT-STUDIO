@@ -23,7 +23,7 @@ const socials = [
 export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-border bg-surface">
-      <div className="section-pad mx-auto grid max-w-7xl gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="section-pad mx-auto grid max-w-7xl gap-8 py-10 sm:gap-10 sm:py-14 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <StudioLogo />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
@@ -47,23 +47,23 @@ export function SiteFooter() {
 
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Explore</p>
-          <div className="mt-4 flex flex-col gap-2 text-sm text-muted">
-            <Link href="/spaces" className="hover:text-accent">
+          <div className="mt-4 flex flex-col gap-1 text-sm text-muted sm:gap-2">
+            <Link href="/spaces" className="py-1.5 hover:text-accent sm:py-0">
               Studio spaces
             </Link>
-            <Link href="/rentals" className="hover:text-accent">
+            <Link href="/rentals" className="py-1.5 hover:text-accent sm:py-0">
               Rentals
             </Link>
-            <Link href="/book" className="hover:text-accent">
+            <Link href="/book" className="py-1.5 hover:text-accent sm:py-0">
               Book a shoot
             </Link>
-            <Link href="/about" className="hover:text-accent">
+            <Link href="/about" className="py-1.5 hover:text-accent sm:py-0">
               About
             </Link>
-            <Link href="/reviews" className="hover:text-accent">
+            <Link href="/reviews" className="py-1.5 hover:text-accent sm:py-0">
               Leave a review
             </Link>
-            <Link href="/studio/payment-link" className="text-muted/60 hover:text-muted">
+            <Link href="/studio/payment-link" className="py-1.5 text-muted/60 hover:text-muted sm:py-0">
               Staff
             </Link>
           </div>
@@ -72,24 +72,24 @@ export function SiteFooter() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Studio</p>
           <div className="mt-4 flex flex-col gap-2 text-sm text-muted">
-            <a href={studioContact.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+            <a href={studioContact.whatsappUrl} target="_blank" rel="noopener noreferrer" className="break-words hover:text-accent">
               WhatsApp {studioContact.phoneDisplay}
             </a>
-            <a href={`mailto:${studioContact.email}`} className="hover:text-accent">
+            <a href={`mailto:${studioContact.email}`} className="break-all hover:text-accent">
               {studioContact.email}
             </a>
-            <p>{studioContact.address}</p>
+            <p className="break-words">{studioContact.address}</p>
             <p>By appointment</p>
             <p>15 curated sets. One studio.</p>
           </div>
         </div>
       </div>
-      <div className="border-t border-border py-5 text-center text-xs text-muted">
-        <span>© {new Date().getFullYear()} WAFFI Content Studio. All rights reserved.</span>
-        <span className="mx-2 text-border" aria-hidden="true">
+      <div className="border-t border-border px-4 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-center text-xs text-muted">
+        <span className="block sm:inline">© {new Date().getFullYear()} WAFFI Content Studio. All rights reserved.</span>
+        <span className="mx-2 hidden text-border sm:inline" aria-hidden="true">
           ·
         </span>
-        <Link href="/studio/payment-link" className="text-muted/70 transition hover:text-muted">
+        <Link href="/studio/payment-link" className="mt-2 inline-block text-muted/70 transition hover:text-muted sm:mt-0">
           Staff
         </Link>
       </div>

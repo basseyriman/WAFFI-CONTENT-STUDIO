@@ -10,20 +10,20 @@ export type RentalItem = {
 
 export const rentals: RentalItem[] = [
   {
-    id: "christmas-pyjamas",
-    name: "Christmas Pyjamas — All Sizes",
+    id: "costumes",
+    name: "Costumes",
     category: "Props",
     pricePerDay: 10000,
-    description: "Festive pyjama sets for holiday shoots, stocked in every size: Kids, XS, S, M, L, XL, and XXL.",
+    description: "Shoot costumes and wardrobe pieces prepared for your booking day. Tell us what you need when you book.",
     image: "/rentals/rental-christmas-pyjamas.jpg",
     available: true,
   },
   {
-    id: "maternity-long-gown",
-    name: "Maternity Long Gown",
+    id: "other-props",
+    name: "Other props / styling",
     category: "Props",
     pricePerDay: 12000,
-    description: "A set of flowing floor-length gowns shaped for pregnancy, in several colors, for maternity portraits and bump shoots.",
+    description: "Additional props or styling pieces for your shoot. Share the details in your booking message.",
     image: "/rentals/rental-maternity-gowns.jpg",
     available: true,
   },

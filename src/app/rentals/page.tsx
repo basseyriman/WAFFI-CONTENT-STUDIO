@@ -5,7 +5,7 @@ import { RentalCard } from "@/components/rental-card";
 
 export const metadata: Metadata = {
   title: "Rentals",
-  description: "Rent Christmas pyjamas and maternity gowns for your WAFFI Content Studio shoot.",
+  description: "Rent costumes and styling pieces for your WAFFI Content Studio shoot.",
 };
 
 export default function RentalsPage() {
@@ -14,7 +14,7 @@ export default function RentalsPage() {
       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Shoot essentials</p>
       <h1 className="font-display mt-3 max-w-3xl text-4xl text-ink md:text-6xl">Rent items for your shoot</h1>
       <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-        Request Christmas pyjamas and maternity gowns through the website. We prepare them for your booking day at WAFFI.
+        Request costumes and styling pieces through the website. We prepare them for your booking day at WAFFI.
       </p>
 
       <div className="mt-10 rounded-2xl border border-border bg-surface p-6 md:flex md:items-center md:justify-between md:gap-6">

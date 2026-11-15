@@ -1,3 +1,5 @@
+export type StayMode = "hour" | "night";
+
 export type StudioSpace = {
   slug: string;
   petName: string;
@@ -7,6 +9,14 @@ export type StudioSpace = {
   image: string;
   highlights: string[];
   idealFor: string[];
+  /** Timed shoot rate in Naira. */
+  priceHour?: number;
+  /** Overnight stay rate in Naira (not a 24-hour hourly multiply). */
+  priceNight?: number;
+  /** Whole space is guide-only — confirm with studio before charging. */
+  onRequest?: boolean;
+  /** Overnight option is guide-only (hourly can still be payable). */
+  nightOnRequest?: boolean;
 };
 
 export const spaces: StudioSpace[] = [
@@ -20,6 +30,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/heritage.jpg",
     highlights: ["Textured heritage styling", "Warm cinematic lighting", "Statement furniture"],
     idealFor: ["Cultural campaigns", "Portrait series", "Brand storytelling"],
+    priceHour: 45000,
   },
   {
     slug: "waffi-drape",
@@ -31,6 +42,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/nest.jpg",
     highlights: ["Soft draped styling", "Nursery-ready mood", "Family-ready props"],
     idealFor: ["Maternity shoots", "Kids content", "Family brands"],
+    priceHour: 35000,
   },
   {
     slug: "waffi-cloud",
@@ -42,6 +54,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/ivory.jpg",
     highlights: ["Pristine white surfaces", "Diffused soft light", "Minimalist props"],
     idealFor: ["Fashion", "Product", "Beauty campaigns"],
+    priceHour: 40000,
   },
   {
     slug: "waffi-rose",
@@ -53,6 +66,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/blush.jpg",
     highlights: ["Rose palette", "Velvet seating", "Glamorous ambience"],
     idealFor: ["Beauty brands", "Influencer content", "Romance campaigns"],
+    priceHour: 35000,
   },
   {
     slug: "waffi-glam",
@@ -75,6 +89,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/ascent.jpg",
     highlights: ["Architectural staircase", "Dramatic lighting", "Editorial depth"],
     idealFor: ["Fashion editorial", "Reels & TikToks", "Lookbooks"],
+    priceHour: 45000,
   },
   {
     slug: "waffi-suite",
@@ -82,10 +97,13 @@ export const spaces: StudioSpace[] = [
     category: "Bedroom",
     tagline: "Intimate lifestyle, elevated.",
     description:
-      "A luxurious bedroom set for lifestyle brands, morning routines, and intimate product storytelling with hotel-suite energy.",
+      "A luxurious bedroom suite for lifestyle shoots, morning routines, intimate product storytelling, and overnight stays — hourly or night booking.",
     image: "/spaces/suite.jpg",
-    highlights: ["Premium bedding", "Soft ambient light", "Lifestyle props"],
-    idealFor: ["Lifestyle brands", "Skincare", "Intimate apparel"],
+    highlights: ["Premium bedding", "Soft ambient light", "Overnight-ready suite"],
+    idealFor: ["Lifestyle brands", "Overnight stays", "Skincare", "Intimate apparel"],
+    priceHour: 40000,
+    priceNight: 60000,
+    nightOnRequest: true,
   },
   {
     slug: "waffi-socials",
@@ -97,6 +115,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/social.jpg",
     highlights: ["Bar counter set", "Games lounge", "Mood lighting"],
     idealFor: ["Beverage brands", "Creator collabs", "Party content"],
+    priceHour: 30000,
   },
   {
     slug: "waffi-desk",
@@ -108,6 +127,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/desk.jpg",
     highlights: ["Executive desk styling", "Clean backdrop", "Professional lighting"],
     idealFor: ["Founders", "Corporate brands", "LinkedIn content"],
+    priceHour: 30000,
   },
   {
     slug: "waffi-voice",
@@ -119,6 +139,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/echo.jpg",
     highlights: ["Acoustic treatment", "Mic-ready setup", "Talk-show framing"],
     idealFor: ["Podcasts", "Interviews", "Audio brands"],
+    priceHour: 30000,
   },
   {
     slug: "waffi-spice",
@@ -130,6 +151,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/hearth.jpg",
     highlights: ["Kitchen island", "Warm pendant light", "Food-ready surfaces"],
     idealFor: ["Food brands", "Recipe creators", "Kitchenware"],
+    priceHour: 45000,
   },
   {
     slug: "waffi-backdrop",
@@ -148,10 +170,12 @@ export const spaces: StudioSpace[] = [
     category: "Lounge / Sitting Room",
     tagline: "Conversation-ready comfort.",
     description:
-      "A refined sitting lounge for talk-style content, brand interviews, and cozy lifestyle scenes that feel lived-in and elevated.",
+      "A refined sitting lounge for talk-style content, brand interviews, cozy lifestyle scenes, and overnight stays — hourly shoots or night bookings.",
     image: "/spaces/lounge.jpg",
-    highlights: ["Layered seating", "Ambient lamps", "Conversation framing"],
-    idealFor: ["Interviews", "Lifestyle brands", "Creator chats"],
+    highlights: ["Layered seating", "Ambient lamps", "Overnight-ready lounge"],
+    idealFor: ["Interviews", "Lifestyle brands", "Overnight stays", "Creator chats"],
+    priceHour: 45000,
+    priceNight: 150000,
   },
   {
     slug: "waffi-passage",
@@ -163,6 +187,7 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/passage.jpg",
     highlights: ["Long sightlines", "Gallery framing", "Editorial movement"],
     idealFor: ["Fashion walks", "Transitions", "Brand films"],
+    priceHour: 30000,
   },
   {
     slug: "waffi-balcony",
@@ -174,9 +199,62 @@ export const spaces: StudioSpace[] = [
     image: "/spaces/terrace.jpg",
     highlights: ["Natural light", "Outdoor seating", "Skyline atmosphere"],
     idealFor: ["Golden hour", "Lifestyle outdoors", "Fresh air content"],
+    priceHour: 30000,
   },
 ];
 
 export function getSpace(slug: string) {
   return spaces.find((s) => s.slug === slug);
+}
+
+export function formatNairaAmount(amount: number) {
+  return new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
+export function hasHourRate(space: StudioSpace) {
+  return typeof space.priceHour === "number";
+}
+
+export function hasNightRate(space: StudioSpace) {
+  return typeof space.priceNight === "number";
+}
+
+export function offersOvernight(space: StudioSpace) {
+  return hasNightRate(space) || Boolean(space.nightOnRequest);
+}
+
+export function isDualStaySpace(space: StudioSpace) {
+  return hasHourRate(space) && offersOvernight(space);
+}
+
+export function defaultStayMode(space: StudioSpace): StayMode | null {
+  if (isDualStaySpace(space)) return "hour";
+  if (hasHourRate(space)) return "hour";
+  if (offersOvernight(space)) return "night";
+  return null;
+}
+
+export function formatSpaceRate(space: StudioSpace) {
+  const parts: string[] = [];
+  if (typeof space.priceHour === "number") parts.push(`${formatNairaAmount(space.priceHour)} / hour`);
+  if (typeof space.priceNight === "number") {
+    const night = `${formatNairaAmount(space.priceNight)} / night`;
+    parts.push(space.nightOnRequest ? `${night} · on request` : night);
+  } else if (space.nightOnRequest) {
+    parts.push("Overnight · on request");
+  }
+  if (!parts.length) return "Price on request";
+  const rate = parts.join(" · ");
+  return space.onRequest ? `${rate} · on request` : rate;
+}
+
+export function isPayableStay(space: StudioSpace, mode: StayMode) {
+  if (space.onRequest) return false;
+  if (mode === "hour") return typeof space.priceHour === "number";
+  if (space.nightOnRequest) return false;
+  return typeof space.priceNight === "number";
 }

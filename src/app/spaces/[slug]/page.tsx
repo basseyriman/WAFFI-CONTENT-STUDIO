@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getSpace, spaces } from "@/lib/spaces";
+import { formatSpaceRate, getSpace, spaces } from "@/lib/spaces";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -68,7 +68,12 @@ export default async function SpaceDetailPage({ params }: Props) {
 
         <aside className="h-fit rounded-2xl border border-border bg-surface p-6">
           <p className="font-display text-2xl text-ink">Book {space.petName}</p>
-          <p className="mt-3 text-sm text-muted">Reserve this partition for your next content shoot. Add rentals if you need gear or props.</p>
+          <p className="mt-3 text-lg font-semibold text-accent">{formatSpaceRate(space)}</p>
+          <p className="mt-3 text-sm text-muted">
+            {typeof space.priceHour === "number" && typeof space.priceNight === "number"
+              ? "Book hourly for shoots, or overnight as a night stay — not 24 × the hourly rate."
+              : "Reserve this partition for your next content shoot. Add rentals if you need gear or props."}
+          </p>
           <Link href={`/book?space=${space.slug}`} className="btn-primary mt-6 w-full">
             Request this space
           </Link>

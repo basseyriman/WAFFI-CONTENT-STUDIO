@@ -59,7 +59,7 @@ export default function HomePage() {
             {
               icon: Clapperboard,
               title: "Rent what you need",
-              copy: "Christmas pyjamas in every size, and maternity long gowns, ready for your shoot day.",
+              copy: "Costumes and styling pieces, ready for your shoot day.",
             },
           ].map((item) => (
             <div key={item.title} className="rounded-2xl border border-border bg-surface p-7">
@@ -98,7 +98,7 @@ export default function HomePage() {
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Rentals</p>
               <h2 className="font-display mt-3 text-4xl text-ink">Wardrobe for the shoot</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
-                Rent Christmas pyjamas in every size, or a set of maternity long gowns. Request them when you book — we prepare them for your shoot day.
+                Rent costumes and styling pieces for your shoot. Request them when you book — we prepare them for your shoot day.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/rentals" className="btn-primary">

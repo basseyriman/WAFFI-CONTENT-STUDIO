@@ -9,18 +9,22 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@paystack/inline-js": "^2.28.1",
+    "@resvg/resvg-js": "^2.6.2",
     "@supabase/supabase-js": "^2.112.3",
     "clsx": "^2.1.1",
     "framer-motion": "^13.1.0",
     "lucide-react": "^1.31.0",
     "next": "16.3.0",
     "next-themes": "^0.4.6",
+    "qrcode": "^1.5.4",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/paystack__inline-js": "^1.0.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

@@ -28,7 +28,7 @@ export default function AboutPage() {
           <span className="text-foreground">Waffi Cloud</span>, and golden-hour moments on <span className="text-foreground">Waffi Balcony</span> — every space carries the WAFFI name.
         </p>
         <p className="mt-6 text-lg leading-relaxed text-muted">
-          Beyond the sets, clients can rent Christmas pyjamas and maternity gowns through the website so a shoot arrives with the wardrobe ready.
+          Beyond the sets, clients can rent costumes through the website so a shoot arrives with the wardrobe ready.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Link href="/spaces" className="btn-primary">

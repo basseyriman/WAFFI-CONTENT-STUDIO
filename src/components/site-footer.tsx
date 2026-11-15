@@ -63,6 +63,9 @@ export function SiteFooter() {
             <Link href="/reviews" className="hover:text-accent">
               Leave a review
             </Link>
+            <Link href="/studio/payment-link" className="text-muted/60 hover:text-muted">
+              Staff
+            </Link>
           </div>
         </div>
 
@@ -82,7 +85,13 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-border py-5 text-center text-xs text-muted">
-        © {new Date().getFullYear()} WAFFI Content Studio. All rights reserved.
+        <span>© {new Date().getFullYear()} WAFFI Content Studio. All rights reserved.</span>
+        <span className="mx-2 text-border" aria-hidden="true">
+          ·
+        </span>
+        <Link href="/studio/payment-link" className="text-muted/70 transition hover:text-muted">
+          Staff
+        </Link>
       </div>
     </footer>
   );
